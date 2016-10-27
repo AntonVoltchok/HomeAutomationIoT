@@ -4,17 +4,14 @@ export default class Slot extends Component {
   
   constructor(props) {
     super(props);
-    this.state = {isOn: false};
+    this.state = {isOn: true};
   }
   
   toggleButton = () => {
     this.setState({isOn: !this.state.isOn});
     let buttonValue = this.state.isOn ? 1 : 0;
     this.props.getControlValue(buttonValue);
-    
   };
-  
-  
   
   render() {
     

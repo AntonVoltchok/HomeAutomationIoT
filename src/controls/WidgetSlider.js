@@ -1,36 +1,37 @@
-import React, { Component } from 'react'
-import Slider from 'react-rangeslider'
+import React, {Component} from 'react';
+import Slider from 'material-ui/Slider';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-class WidgetSlider extends Component {
-  constructor (props, context) {
-    super(props, context);
-    this.state = {
-      value: 10
-    }
+/**
+ * The slider bar can have a set minimum and maximum, and the value can be
+ * obtained through the value parameter fired on an onChange event.
+ */
+export default class SliderExampleControlled extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {sliderValue: 2};
   }
   
-  handleChange = (value) => {
-    this.setState({
-      value: value
-    })
+  handleSlider = (event, value) => {
+    this.setState({sliderValue: value});
+    this.props.getControlValue(value);
   };
   
-  render () {
-    const { value } = this.state;
+  render() {
+    
     return (
-      <div className='horizontal-slider'>
-        <h4>Basic Slider</h4>
-        <Slider
-          min={0}
-          max={100}
-          value={value}
-          onChange={this.handleChange}
-        />
-        <div className='value'>Value: {value}</div>
-        <hr />
-      </div>
-    )
+      <MuiThemeProvider>
+        <div style={{width:70, minWidth:70, maxWidth:70}}>
+          <Slider
+            min={0}
+            max={9}
+            step={1}
+            defaultValue={5}
+            value={this.state.sliderValue}
+            onChange={this.handleSlider}/>
+        </div>
+      </MuiThemeProvider>
+    );
   }
 }
-
-export default WidgetSlider

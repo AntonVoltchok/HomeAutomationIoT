@@ -16,7 +16,7 @@ export default class Room extends Component {
         
         <h2>Current API Code: {this.state.apiCode}</h2>
         
-        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap:'wrap', maxWidth:'300px'}}>
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap:'wrap', maxWidth:'360px'}}>
           {this.state.apiCode.map((slotValue, index) => <Slot key={index} value={slotValue} index={index}/>)}
         </div>
       </div>
